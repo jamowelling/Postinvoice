@@ -9,5 +9,22 @@ Navigation.startSingleScreenApp({
   screen: {
     screen: 'postinvoice.HomeScreen',
     title: 'Postinvoice',
+    navigatorStyle: {
+      navBarTitleTextCentered: true,
+    },
+    navigatorButtons: {
+      rightButtons: [
+        {
+          title: '+',
+          id: 'add',
+        }
+      ],
+      leftButtons: [
+        {
+          title: 'sideMenu',
+          id: 'sideMenu'
+        }
+      ],
+    },
   },
 });

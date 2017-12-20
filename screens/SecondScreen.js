@@ -4,8 +4,8 @@ import { View, Text } from 'react-native';
 class SecondScreen extends Component <{}> {
   render() {
     return (
-      <View>
-        <Text>Second Screen</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Postinvoice</Text>
       </View>
     );
   }
