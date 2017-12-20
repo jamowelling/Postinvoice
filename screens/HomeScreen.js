@@ -4,6 +4,22 @@ import { DB_URL } from 'react-native-dotenv';
 
 class HomeScreen extends Component <{}> {
 
+  constructor(props) {
+    super(props);
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type == 'NavBarButtonPress') {
+      if (event.id == 'sideMenu') {
+        alert('Menu button pressed');
+      }
+      if (event.id == 'add') {
+        alert('Add button pressed');
+      }
+    }
+  }
+
   onPress() {
     console.log('DB_URL: ', DB_URL);
     const route = this.children.props.children;
