@@ -12,5 +12,5 @@ export function registerScreens() {
   Navigation.registerComponent('postinvoice.SelectDateScreen', () => SelectDateScreen);
   Navigation.registerComponent('postinvoice.SelectSupplierScreen', () => SelectSupplierScreen);
   Navigation.registerComponent('postinvoice.InvoiceNumberScreen', () => InvoiceNumberScreen);
-  Navigation.registerComopnent('postinvoice.CategoryBreakdownScreen', () => CategoryBreakdownScreen); //eslint-disable-line
+  Navigation.registerComponent('postinvoice.CategoryBreakdownScreen', () => CategoryBreakdownScreen); //eslint-disable-line
 }

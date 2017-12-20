@@ -9,9 +9,7 @@ class SelectDateScreen extends Component <{}> {
 
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
-      alert('pressed');
       if (event.id == 'cancel') {
-        alert('Cancel button pressed');
         this.props.navigator.pop({
           animated: true,
         });
