@@ -15,7 +15,7 @@ Navigation.startSingleScreenApp({
     navigatorButtons: {
       rightButtons: [
         {
-          title: '+',
+          title: 'Add',
           id: 'add',
         }
       ],
