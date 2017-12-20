@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 class HomeScreen extends Component <{}> {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', borderWidth: 2,  }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
         <Text>
           FlatList
         </Text>
