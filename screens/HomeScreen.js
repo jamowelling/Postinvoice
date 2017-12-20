@@ -16,6 +16,21 @@ class HomeScreen extends Component <{}> {
       }
       if (event.id == 'add') {
         alert('Add button pressed');
+        this.props.navigator.push({
+          screen: 'postinvoice.SelectDateScreen',
+          title: 'Select Date',
+          navigatorStyle: {
+            navBarTitleTextCentered: true,
+          },
+          navigatorButtons: {
+            leftButtons: [
+              {
+                title: 'cancel',
+                id: 'cancel',
+              }
+            ]
+          }
+        });
       }
     }
   }

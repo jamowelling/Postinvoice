@@ -1,10 +1,16 @@
 import { Navigation } from 'react-native-navigation';
 
 import HomeScreen from './HomeScreen';
-import SecondScreen from './SecondScreen';
+import SelectDateScreen from './AddInvoice/SelectDateScreen';
+import SelectSupplierScreen from './AddInvoice/SelectSupplierScreen';
+import InvoiceNumberScreen from './AddInvoice/InvoiceNumberScreen';
+import CategoryBreakdownScreen from './AddInvoice/CategoryBreakdownScreen';
 
 // register all screens of the app (including internal ones)
 export function registerScreens() {
   Navigation.registerComponent('postinvoice.HomeScreen', () => HomeScreen);
-  Navigation.registerComponent('postinvoice.SecondScreen', () => SecondScreen);
+  Navigation.registerComponent('postinvoice.SelectDateScreen', () => SelectDateScreen);
+  Navigation.registerComponent('postinvoice.SelectSupplierScreen', () => SelectSupplierScreen);
+  Navigation.registerComponent('postinvoice.InvoiceNumberScreen', () => InvoiceNumberScreen);
+  Navigation.registerComopnent('postinvoice.CategoryBreakdownScreen', () => CategoryBreakdownScreen); //eslint-disable-line
 }
