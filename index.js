@@ -1,4 +1,30 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { Navigation } from 'react-native-navigation';
 
-AppRegistry.registerComponent('Postinvoice', () => App);
+import { registerScreens } from './screens';
+
+registerScreens(); // this is where you register all of your app's screens
+
+// start the app
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: 'postinvoice.HomeScreen',
+    title: 'Postinvoice',
+    navigatorStyle: {
+      navBarTitleTextCentered: true,
+    },
+    navigatorButtons: {
+      rightButtons: [
+        {
+          title: '+',
+          id: 'add',
+        }
+      ],
+      leftButtons: [
+        {
+          title: 'sideMenu',
+          id: 'sideMenu'
+        }
+      ],
+    },
+  },
+});
