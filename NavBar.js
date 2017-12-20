@@ -31,15 +31,6 @@ const styles = {
     flex: 1,
     backgroundColor: '#eee',
   },
-  leftWrapper: {
-    alignself: 'flex-start',
-  },
-  titleWrapper: {
-    alignSelf: 'center',
-  },
-  rightWrapper: {
-    alignSelf: 'flex-end',
-  }
 };
 
 export default NavBar;
