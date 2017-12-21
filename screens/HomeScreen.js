@@ -12,10 +12,24 @@ class HomeScreen extends Component <{}> {
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'sideMenu') {
-        alert('Menu button pressed');
+        console.log('menu button pressed');
       }
       if (event.id == 'add') {
-        alert('Add button pressed');
+        this.props.navigator.push({
+          screen: 'postinvoice.SelectDateScreen',
+          title: 'Select Date',
+          navigatorStyle: {
+            navBarTitleTextCentered: true,
+          },
+          navigatorButtons: {
+            leftButtons: [
+              {
+                title: 'cancel',
+                id: 'cancel',
+              }
+            ]
+          }
+        });
       }
     }
   }
