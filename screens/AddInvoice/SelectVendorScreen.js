@@ -5,7 +5,7 @@ class SecondScreen extends Component <{}> {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Add new invoice here</Text>
+        <Text>Select Vendor Here</Text>
       </View>
     );
   }

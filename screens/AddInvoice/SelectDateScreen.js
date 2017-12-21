@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import {
+  View,
+  Dimensions,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
 
@@ -21,27 +26,24 @@ class SelectDateScreen extends Component <{}> {
       }
     }
   }
+
+  confirmDate = (date) => {
+    this.setState({ date });
+    this.props.navigator.push({
+      screen: 'postinvoice.SelectVendorScreen',
+      title: 'Select Vendor',
+    });
+  }
+
   render() {
     return (
       <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
         <DatePicker
-          style={{
-            width: Dimensions.get('window').width,
-            height: 400,
-            paddingBottom: 50,
-            justifyContent: 'center'
-          }}
+          style={styles.datepickerStyle}
           androidMode='default'
           customStyles={{
-            dateText: {
-              fontSize: 40,
-            },
-            dateInput: {
-              // height: 60,
-              borderColor: 'rgba(0,0,0,0.2)',
-              borderRadius: 15,
-              margin: 7,
-            }
+            dateText: styles.dateTextStyle,
+            dateInput: styles.dateInputStyle,
           }}
           placeholder={this.state.date}
           mode='date'
@@ -49,11 +51,41 @@ class SelectDateScreen extends Component <{}> {
           date={this.state.date}
           confirmBtnText='Confirm'
           cancelBtnText='Cancel'
-          onDateChange={date => this.setState({ date })}
+          onDateChange={this.confirmDate}
         />
+
+        <TouchableOpacity
+          style={styles.confirmButtonStyle}
+          onPress={() => this.confirmDate(this.state.date)}
+        >
+          <Text>Confirm</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const styles = {
+  datepickerStyle: {
+    width: Dimensions.get('window').width,
+    height: 400,
+    paddingBottom: 50,
+    justifyContent: 'center',
+  },
+  dateTextStyle: {
+    fontSize: 40,
+  },
+  dateInputStyle: {
+    borderColor: 'rgba(0,0,0,0.2)',
+    borderRadius: 15,
+    margin: 7,
+  },
+  confirmButtonStyle: {
+    backgroundColor: '#efeffa',
+    padding: 15,
+    elevation: 1,
+    borderRadius: 2,
+  },
+};
 
 export default SelectDateScreen;
