@@ -7,7 +7,6 @@ import TwoButtons from '../../components/TwoButtons';
 
 class AddVendorModal extends Component <{}> {
   render() {
-    console.log('this.props,', this.props);
     return (
       <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center',  }}>
 

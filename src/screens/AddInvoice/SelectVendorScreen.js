@@ -74,8 +74,6 @@ class SelectVendorScreen extends Component <{}> {
   }
 
   render() {
-    console.log('this.props.invoices', this.props.invoices);
-    console.log('this.state', this.state);
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 7 }}>
