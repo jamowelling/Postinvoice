@@ -16,6 +16,7 @@ class AddVendorModal extends Component <{}> {
             <TextInput
               style={{ fontSize: 24, }}
               onChangeText={this.props.onChangeText}
+              autoFocus={true}
             />
           </View>
 

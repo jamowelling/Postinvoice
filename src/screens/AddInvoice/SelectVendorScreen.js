@@ -90,6 +90,12 @@ class SelectVendorScreen extends Component <{}> {
           leftText='New'
           onLeftPress={this.addVendorModal}
           rightText='Confirm'
+          onRightPress={() => {
+            this.props.navigator.push({
+              screen: 'postinvoice.InvoiceNumberScreen',
+              title: 'Add Invoice Number',
+            });
+          }}
         />
 
       </View>
