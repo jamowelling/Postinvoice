@@ -1,11 +1,18 @@
+import * as types from '../constants';
 /*
 * synchronous action creators
 */
 
-export const RETRIEVE_INVOICES_BEGIN = 'retrieve_invoices_begin';
 export function retrieveEntriesBegin() {
   return {
-    type: RETRIEVE_INVOICES_BEGIN,
+    type: types.RETRIEVE_INVOICES_BEGIN,
+  };
+}
+
+export function onChangeVendorName(vendorName) {
+  return {
+    type: types.ON_CHANGE_VENDOR_NAME,
+    vendorName,
   };
 }
 
