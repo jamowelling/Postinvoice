@@ -178,7 +178,7 @@ const styles = {
   },
 };
 
-const mapStateToProps = ({ invoicesReducer}) => {
+const mapStateToProps = ({ invoicesReducer }) => {
   return { invoicesReducer };
 };
 
