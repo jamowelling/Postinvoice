@@ -6,74 +6,13 @@ import {
   FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
 
 import TwoButtons from '../../components/TwoButtons';
 
-class SecondScreen extends Component <{}> {
+class SelectVendorScreen extends Component <{}> {
   state = {
     selectedVendor: '',
-    vendorNames: [
-      {
-        key: 'natural',
-        name: 'Natural Wine Co.',
-      },
-      {
-        key: 'elite',
-        name: 'Elite Brands',
-      },
-      {
-        key: 'freshpack',
-        name: 'Freshpack Produce',
-      },
-      {
-        key: '1',
-        name: 'Natural Wine Co.',
-      },
-      {
-        key: '2',
-        name: 'Elite Brands',
-      },
-      {
-        key: '3',
-        name: 'Freshpack Produce',
-      },
-      {
-        key: '4',
-        name: 'Natural Wine Co.',
-      },
-      {
-        key: '5',
-        name: 'Elite Brands',
-      },
-      {
-        key: '6',
-        name: 'Freshpack Produce',
-      },
-      {
-        key: '7',
-        name: 'Natural Wine Co.',
-      },
-      {
-        key: '8',
-        name: 'Elite Brands',
-      },
-      {
-        key: '9',
-        name: 'Freshpack Produce',
-      },
-      {
-        key: '10',
-        name: 'Natural Wine Co.',
-      },
-      {
-        key: '11',
-        name: 'Elite Brands',
-      },
-      {
-        key: '12',
-        name: 'Freshpack Produce',
-      },
-    ]
   }
 
   onPress = (selectedVendor) => {
@@ -89,25 +28,27 @@ class SecondScreen extends Component <{}> {
     });
   }
 
+  _keyExtractor = item => item.id;
+
   rendorVendor = ({ item }) => {
-    if (this.state.selectedVendor !== item.key){
+    if (this.state.selectedVendor !== item.id){
       return (
         <TouchableOpacity
-          key={item.key}
+          key={item.id}
           style={styles.vendorContainer}
-          onPress={() => this.onPress(item.key)}
+          onPress={() => this.onPress(item.id)}
         >
-          <Text style={styles.vendorTextStyle}>{item.name}</Text>
+          <Text style={styles.vendorTextStyle}>{item.supplierName}</Text>
         </TouchableOpacity>
       );
     }
     return (
       <TouchableOpacity
-        key={item.key}
+        key={item.id}
         style={styles.selectedVendorContainer}
-        onPress={() => this.onPress(item.key)}
+        onPress={() => this.onPress(item.id)}
       >
-        <Text style={styles.vendorTextStyle}>{item.name}</Text>
+        <Text style={styles.vendorTextStyle}>{item.supplierName}</Text>
         <Icon name='check' size={30} color='green' style={styles.iconStyle} />
       </TouchableOpacity>
     );
@@ -119,7 +60,8 @@ class SecondScreen extends Component <{}> {
         <View style={{ flex: 7 }}>
           <FlatList
             style={styles.vendorListContainer}
-            data={this.state.vendorNames}
+            data={this.props.invoices}
+            keyExtractor={this._keyExtractor}
             renderItem={this.rendorVendor}
             extraData={this.state}
           />
@@ -162,4 +104,9 @@ const styles = {
   }
 };
 
-export default SecondScreen;
+const mapStateToProps = ({ invoicesReducer }) => {
+  const { invoices } = invoicesReducer;
+  return { invoices };
+};
+
+export default connect(mapStateToProps, {})(SelectVendorScreen);
