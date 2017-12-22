@@ -1,4 +1,7 @@
 
-export const RETRIEVE_INVOICES_BEGIN = 'retrieve_invoices_begin';
-
 export const ON_CHANGE_VENDOR_NAME = 'on_change_vendor_name';
+
+export const RETRIEVE_INVOICES_BEGIN = 'retrieve_invoices_begin';
+export const RETRIEVE_INVOICES_COMPLETE = 'retrieve_invoices_complete';
+
+export const UPDATE_INVOICES = 'update_invoices';

@@ -1,6 +1,7 @@
 import * as types from '../constants';
 
 const initialState = {
+  isFetching: false,
   invoices: [],
   newInvoice: {
     date: '',
@@ -19,6 +20,21 @@ function invoices(state = initialState, action) {
           vendor: action.vendorName,
         },
       };
+    case types.RETRIEVE_INVOICES_BEGIN:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case types.RETRIEVE_INVOICES_COMPLETE:
+      return {
+        ...state,
+        isFetching: false,
+      };
+    case types.UPDATE_INVOICES:
+    return {
+      ...state,
+      invoices: action.invoices,
+    };
     default:
       return state;
   }
