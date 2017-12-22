@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { DB_URL } from 'react-native-dotenv';
 import { connect } from 'react-redux';
 
+import { fetchInvoices } from '../actions/invoiceActions';
+
 class HomeScreen extends Component <{}> {
 
   constructor(props) {
@@ -165,6 +167,11 @@ class HomeScreen extends Component <{}> {
             create
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.props.fetchInvoices} style={styles.button} >
+          <Text>
+            test
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -182,4 +189,4 @@ const mapStateToProps = ({ invoicesReducer }) => {
   return { invoicesReducer };
 };
 
-export default connect(mapStateToProps, {})(HomeScreen);
+export default connect(mapStateToProps, { fetchInvoices })(HomeScreen);

@@ -7,7 +7,7 @@ const TwoButtons = props => {
       <TouchableOpacity onPress={props.onLeftPress} style={styles.buttonStyle} >
         <Text style={{ textAlign: 'center', }}>{props.leftText}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonStyle} >
+      <TouchableOpacity onPress={props.onRightPress} style={styles.buttonStyle} >
         <Text style={{ textAlign: 'center', }}>{props.rightText}</Text>
       </TouchableOpacity>
     </View>

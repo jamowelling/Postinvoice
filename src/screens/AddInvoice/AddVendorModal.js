@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, } from 'react-native';
+import { connect } from 'react-redux';
 
+import { onChangeVendorName } from '../../actions/invoiceActions';
 import TwoButtons from '../../components/TwoButtons';
 
 class AddVendorModal extends Component <{}> {
@@ -13,6 +15,8 @@ class AddVendorModal extends Component <{}> {
             <Text style={{ fontSize: 26, paddingBottom: 25, }}>Add Vendor</Text>
             <TextInput
               style={{ fontSize: 24, }}
+              onChangeText={this.props.onChangeText}
+              autoFocus={true}
             />
           </View>
 
@@ -21,7 +25,7 @@ class AddVendorModal extends Component <{}> {
             rightText='Confirm'
             style={{ flex: null }}
             onLeftPress={this.props.navigator.dismissAllModals}
-            onRightPress={() => alert('pressed')} // Add Vendor function
+            onRightPress={this.props.addVendor} // Add Vendor function
           />
 
         </View>
@@ -31,4 +35,9 @@ class AddVendorModal extends Component <{}> {
   }
 }
 
-export default AddVendorModal;
+const mapStateToProps = ({ invoicesReducer }) => {
+  const { newInvoice } = invoicesReducer;
+  return { newInvoice };
+};
+
+export default connect(mapStateToProps, { onChangeVendorName })(AddVendorModal);
