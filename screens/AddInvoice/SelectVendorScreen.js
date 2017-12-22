@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import TwoButtons from '../../components/TwoButtons';
+
 class SecondScreen extends Component <{}> {
   state = {
     selectedVendor: '',
@@ -78,6 +80,15 @@ class SecondScreen extends Component <{}> {
     this.setState({ selectedVendor });
   }
 
+  addVendor = () => {
+    this.props.navigator.showModal({
+      screen: 'postinvoice.AddVendorModal',
+      navigatorStyle: {
+        navBarHidden: true,
+      }
+    });
+  }
+
   rendorVendor = ({ item }) => {
     if (this.state.selectedVendor !== item.key){
       return (
@@ -114,14 +125,11 @@ class SecondScreen extends Component <{}> {
           />
         </View>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buttonStyle} >
-            <Text style={{ textAlign: 'center', }}>New</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonStyle} >
-            <Text style={{ textAlign: 'center', }}>Confirm</Text>
-          </TouchableOpacity>
-        </View>
+        <TwoButtons
+          leftText='New'
+          onLeftPress={this.addVendor}
+          rightText='Confirm'
+        />
 
       </View>
     );
@@ -129,20 +137,6 @@ class SecondScreen extends Component <{}> {
 }
 
 const styles = {
-  buttonContainer: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'flex-start',
-    padding: 15,
-    justifyContent: 'space-around',
-  },
-  buttonStyle: {
-    minWidth: 75,
-    backgroundColor: '#efeffa',
-    padding: 15,
-    elevation: 1,
-    borderRadius: 2
-  },
   vendorListContainer: {
     flex: 1,
   },
