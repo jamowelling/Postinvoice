@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { DB_URL } from 'react-native-dotenv';
+import { connect } from 'react-redux';
 
 class HomeScreen extends Component <{}> {
 
@@ -141,6 +142,7 @@ class HomeScreen extends Component <{}> {
 
 
   render() {
+    console.log('this.props', this.props);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', }}>
         <TouchableOpacity onPress={this.onPress} style={styles.button} >
@@ -176,4 +178,8 @@ const styles = {
   },
 };
 
-export default HomeScreen;
+const mapStateToProps = ({ invoicesReducer}) => {
+  return { invoicesReducer };
+};
+
+export default connect(mapStateToProps, {})(HomeScreen);
