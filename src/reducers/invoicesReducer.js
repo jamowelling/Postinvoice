@@ -30,6 +30,11 @@ function invoices(state = initialState, action) {
         ...state,
         isFetching: false,
       };
+    case types.TEMPORARY_ADD_VENDOR:
+      return {
+        ...state,
+        invoices: [action.mockInvoice, ...state.invoices],
+      };
     case types.UPDATE_INVOICES:
     return {
       ...state,

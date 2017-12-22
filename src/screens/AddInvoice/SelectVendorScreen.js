@@ -8,23 +8,42 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 
+import { temporaryAddVendor } from '../../actions/invoiceActions';
 import TwoButtons from '../../components/TwoButtons';
 
 class SelectVendorScreen extends Component <{}> {
   state = {
     selectedVendor: '',
+    newVendorName: '',
   }
 
   onPress = (selectedVendor) => {
     this.setState({ selectedVendor });
   }
 
+  onChangeText = (newVendorName) => {
+    this.setState({ newVendorName });
+  }
+
   addVendor = () => {
+    this.props.temporaryAddVendor({
+      id: 'temporary_id',
+      supplierName: this.state.newVendorName,
+    });
+    this.setState({ selectedVendor: 'temporary_id' });
+    this.props.navigator.dismissAllModals();
+  }
+
+  addVendorModal = () => {
     this.props.navigator.showModal({
       screen: 'postinvoice.AddVendorModal',
       navigatorStyle: {
         navBarHidden: true,
-      }
+      },
+      passProps: {
+        addVendor: this.addVendor,
+        onChangeText: this.onChangeText,
+      },
     });
   }
 
@@ -55,6 +74,8 @@ class SelectVendorScreen extends Component <{}> {
   }
 
   render() {
+    console.log('this.props.invoices', this.props.invoices);
+    console.log('this.state', this.state);
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 7 }}>
@@ -69,7 +90,7 @@ class SelectVendorScreen extends Component <{}> {
 
         <TwoButtons
           leftText='New'
-          onLeftPress={this.addVendor}
+          onLeftPress={this.addVendorModal}
           rightText='Confirm'
         />
 
@@ -109,4 +130,4 @@ const mapStateToProps = ({ invoicesReducer }) => {
   return { invoices };
 };
 
-export default connect(mapStateToProps, {})(SelectVendorScreen);
+export default connect(mapStateToProps, { temporaryAddVendor })(SelectVendorScreen);

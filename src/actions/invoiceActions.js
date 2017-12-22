@@ -22,6 +22,13 @@ export function retrieveInvoicesComplete() {
   };
 }
 
+export function temporaryAddVendor(mockInvoice) {
+  return {
+    type: types.TEMPORARY_ADD_VENDOR,
+    mockInvoice,
+  };
+}
+
 export function updateInvoices(invoices) {
   return {
     type: types.UPDATE_INVOICES,

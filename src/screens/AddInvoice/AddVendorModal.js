@@ -7,6 +7,7 @@ import TwoButtons from '../../components/TwoButtons';
 
 class AddVendorModal extends Component <{}> {
   render() {
+    console.log('this.props,', this.props);
     return (
       <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center',  }}>
 
@@ -15,7 +16,7 @@ class AddVendorModal extends Component <{}> {
             <Text style={{ fontSize: 26, paddingBottom: 25, }}>Add Vendor</Text>
             <TextInput
               style={{ fontSize: 24, }}
-              onChangeText={this.props.onChangeVendorName}
+              onChangeText={this.props.onChangeText}
             />
           </View>
 
@@ -24,7 +25,7 @@ class AddVendorModal extends Component <{}> {
             rightText='Confirm'
             style={{ flex: null }}
             onLeftPress={this.props.navigator.dismissAllModals}
-            onRightPress={() => alert('pressed')} // Add Vendor function
+            onRightPress={this.props.addVendor} // Add Vendor function
           />
 
         </View>
